@@ -1,0 +1,26 @@
+{
+  "name": "cypresslessonsbdg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "cypress-dotenv": "^3.0.1",
+    "dotenv": "^16.4.7",
+    "install": "^0.13.0",
+    "node-xlsx": "^0.24.0",
+    "npm": "^11.0.0",
+    "xlsx": "^0.20.2"
+  },
+  "dependencies": {
+    "cypress-downloadfile": "^1.2.4",
+    "cypress-real-events": "^1.13.0",
+    "neat-csv": "^7.0.0",
+    "papaparse": "^5.5.1"
+  }
+}
