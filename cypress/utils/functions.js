@@ -18,8 +18,8 @@ function reloadAndCheck(retries) {
       } else if (retries === 0) {
         throw new Error('Max retries reached and last li is not "Gallery"');
       }
-    })
-};
+    });
+}
 
 function emailGenerator(len) {
   let mail = " ";
@@ -30,6 +30,6 @@ function emailGenerator(len) {
     mail += charset.charAt(Math.floor(Math.random() * charset.length));
   }
   return `${mail}${gmail}`;
-};
+}
 
 export default { reloadAndCheck, emailGenerator };
