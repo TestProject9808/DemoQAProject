@@ -9,6 +9,6 @@ describe("Main page testing", () => {
     cy.get(".header-text").should("contain", basePage.NAMES.elements);
     cy.get("#item-0").contains("Text Box").click();
 
-   //cy.get(".menu-list").find("li").its("length").should("eq", 9);
+   cy.get(".menu-list").find("li").its("length").should("eq", 9);
   });
 });
