@@ -8,6 +8,7 @@ import { downloadFile } from "cypress-downloadfile/lib/addPlugin.js";
 
 dotenv.config()
 const config= defineConfig({
+  video: true,
   e2e: {
     baseUrl: process.env.globalUrl,
     setupNodeEvents(on, config) {
