@@ -1,7 +1,7 @@
 import { basePage } from "../../Pages/Base";
 import { buttons } from "../../Pages/Buttons";
 
-describe("Main page testing", () => {
+describe("Elements/Buttons testing", () => {
   beforeEach(() => {
     cy.visit("/buttons");
   });
@@ -21,37 +21,27 @@ describe("Main page testing", () => {
     cy.get(basePage.LOCATORS.h1).should("contain", buttons.NAMES.title);
   });
 
-  it("Verify Double Click button functionality", () => {
+  it("Verify buttons functionality", () => {
     // Check double click button
     cy.contains(buttons.NAMES.btnDblClick).click(); //negative case
     cy.get(buttons.NAMES.msgDblClick).should("not.exist"); //negative case
     cy.contains(buttons.NAMES.btnDblClick).dblclick(); //positive case
     cy.contains(buttons.NAMES.msgDblClick).should("exist"); //positive case
-  });
 
-  it("Verify Right Click button functionality", () => {
     // Check right click button
     cy.contains(buttons.NAMES.btnRtClick).click(); //negative case
     cy.get(buttons.NAMES.msgRtClick).should("not.exist"); //negative case
     cy.contains(buttons.NAMES.btnRtClick).rightclick(); //positive case
     cy.contains(buttons.NAMES.msgRtClick).should("exist"); //positive case
-  });
 
-  it("Verify Click button functionality", () => {
     // Check right click button
     cy.contains(buttons.NAMES.btnClick).rightclick(); //negative case
     cy.get(buttons.NAMES.msgClick).should("not.exist"); //negative case
     buttons.getClickButton().click(); //positive case
     cy.contains(buttons.NAMES.msgClick).should("exist"); //positive case
-  });
 
-  it("Verify Clicking all the buttons functionality", () => {
-    // Check right click button
-    cy.contains(buttons.NAMES.btnDblClick).dblclick();
-    cy.contains(buttons.NAMES.btnRtClick).rightclick();
-    buttons.getClickButton().click();
+    // Check that DblClick and RtClick messages remain on page
     cy.contains(buttons.NAMES.msgDblClick).should("exist");
     cy.contains(buttons.NAMES.msgRtClick).should("exist");
-    cy.contains(buttons.NAMES.msgClick).should("exist");
   });
 });
