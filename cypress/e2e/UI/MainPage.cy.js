@@ -7,8 +7,8 @@ describe("Main page testing", () => {
     cy.contains(basePage.NAMES.elements).click();
   });
   it("Verify main page content", () => {
-    cy.get(".header-text").should("contain", basePage.NAMES.elements);
+    basePage.getHeaderText().should("contain", basePage.NAMES.elements);
     cy.get("#item-0").contains("Text Box").click();
-    //cy.get(".element-group").get(".menu-list").find("li").its("length").should("eq", 9);
+    cy.get('.collapse.show').find("li").its("length").should("eq", 9);
   });
 });
