@@ -60,20 +60,31 @@ class WebTables {
   }
 
   searchUser(name) {
-    cy.get(this.searchBox).type(name);
-  }
+    cy.get(this.searchBox)
+      .should("be.visible") // Ensure it's visible
+      .should("not.be.disabled") // Ensure it's not disabled
+      .should("not.have.class", "animating") // Optional: Check for animation class
+      .clear() // Clear before typing
+      .type(name, { delay: 100 }); // Add delay to mimic real typing
+}
 
   verifyUserExists(name) {
     cy.get(this.tableRows).should("contain", name);
   }
 
   deleteUser() {
-    cy.get(this.deleteButton).first().click();
-  }
+    cy.get(this.deleteButton)
+      .should("be.visible") // Ensure delete button is visible
+      .first()
+      .click();
+    
+    cy.wait(1000); // Wait for UI update
+}
 
-  verifyNoResults() {
-    cy.wait(1000);
-    cy.get(this.tableRows).should('not.exist');
+
+verifyNoResults() {
+  cy.wait(1000); // Wait before checking
+  cy.get(this.tableRows).should("have.length", 0); // Alternative assertion
 }
 }
 

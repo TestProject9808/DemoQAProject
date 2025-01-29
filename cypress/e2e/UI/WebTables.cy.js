@@ -1,9 +1,9 @@
 import { webTables } from "../../Pages/WebTables";
 describe("DemoQA - Web Tables Tests", () => {
-  const { testData } = Cypress.env();
+  const testData = Cypress.config.testData;
 
   beforeEach(() => {
-    webTables.visit();
+    webTables.visit("/webtables");
   });
 
   it("Verify Page Elements are Displayed", () => {
@@ -15,7 +15,7 @@ describe("DemoQA - Web Tables Tests", () => {
     webTables.addUser(testData.validUser);
     webTables.searchUser(testData.validUser.firstName);
     webTables.verifyUserExists(testData.validUser.firstName);
-  });
+});
 
   it("Search for a Nonexistent User and Verify No Results", () => {
     webTables.searchUser("NonexistentUser");
@@ -33,5 +33,12 @@ describe("DemoQA - Web Tables Tests", () => {
     webTables.addUser(testData.invalidUser);
     webTables.searchUser(testData.invalidUser.firstName);
     webTables.verifyNoResults();
+  });
+
+  describe('Check Cypress Config', () => {
+    it.only('Logs Cypress env variables', () => {
+      console.log("ENV Data:", Cypress.config("env"));
+      console.log("Test Data:", Cypress.env("testData"));
+    });
   });
 });
