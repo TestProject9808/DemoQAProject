@@ -4,12 +4,12 @@ import { checkBox } from "../../Pages/CheckBox";
 describe("Main page testing", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.contains(basePage.NAMES.elements).should("be.visible");
-    cy.contains(basePage.NAMES.elements).click();
+    cy.contains(basePage.sections[0]).should("be.visible");
+    cy.contains(basePage.sections[0]).click();
   });
 
   it("Verifies check boxes button functionality and Page", () => {
-    basePage.getHeaderText().should("contain", basePage.NAMES.elements);
+    basePage.getHeaderText().should("contain", basePage.sections[0]);
     cy.contains(checkBox.NAMES.checkBox).should("be.visible");
     checkBox.getCheckboxID().should("not.have.class", basePage.LOCATORS.active);
     checkBox.getCheckboxID().contains(checkBox.NAMES.checkBox).click();
