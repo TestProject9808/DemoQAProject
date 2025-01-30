@@ -13,6 +13,7 @@ class BasePage {
   LOCATORS = {
     active: "active",
     h1: "h1",
+    svg: "svg"
   };
 
   getHeaderText() {
