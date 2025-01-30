@@ -3,18 +3,20 @@ describe("DemoQA - Web Tables Tests", () => {
   const testData = Cypress.config.testData;
 
   beforeEach(() => {
-    webTables.visit("/webtables");
+    cy.visit("/webtables");
+    cy.contains("Web Tables").click()
+
   });
 
   it("Verify Page Elements are Displayed", () => {
-    cy.get(webTables.addButton).should("be.visible");
-    cy.get(webTables.searchBox).should("be.visible");
+    webTables.addButton().should("be.visible");
+    webTables.searchBox().should("be.visible");
   });
 
   it("Add a New User and Verify It Appears in the Table", () => {
-    webTables.addUser(testData.validUser);
-    webTables.searchUser(testData.validUser.firstName);
-    webTables.verifyUserExists(testData.validUser.firstName);
+    webTables.addUser(webTables.testData.fullName);
+    webTables.searchUser(webTables.testData.firstName);
+    webTables.verifyUserExists(webTables.testData.validUser);
 });
 
   it("Search for a Nonexistent User and Verify No Results", () => {
@@ -23,22 +25,15 @@ describe("DemoQA - Web Tables Tests", () => {
   });
 
   it("Delete a User and Verify It is Removed", () => {
-    webTables.addUser(testData.validUser);
-    webTables.searchUser(testData.validUser.firstName);
+    webTables.addUser(webTables.testData.validUser);
+    webTables.searchUser(webTables.testData.validUser);
     webTables.deleteUser();
     webTables.verifyNoResults();
   });
 
   it("Attempt to Add a User with Invalid Data (Should Not Be Added)", () => {
-    webTables.addUser(testData.invalidUser);
-    webTables.searchUser(testData.invalidUser.firstName);
+    webTables.addUser(webTables.testData.invalidUser);
+    webTables.searchUser(webTables.testData.invalidUser);
     webTables.verifyNoResults();
-  });
-
-  describe('Check Cypress Config', () => {
-    it.only('Logs Cypress env variables', () => {
-      console.log("ENV Data:", Cypress.config("env"));
-      console.log("Test Data:", Cypress.env("testData"));
-    });
   });
 });

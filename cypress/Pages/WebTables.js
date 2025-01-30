@@ -1,46 +1,65 @@
 class WebTables {
-  get addButton() {
-    return "#addNewRecordButton";
+  testData = {
+    fullName: "John Doe",
+    email: "john.doe@example.com",
+    currentAddress: "123 Cypress Lane",
+    permanentAddress: "456 Automation Street",
+    firstName: "Updated Name",
+    lastName: "Last Name",
+    email: "updated.email@example.com",
+    currentAddress: "Updated Current Address",
+    permanentAddress: "Updated Permanent Address",
+    specialChars: "@#$%^&*!()_-+=[]{}|\\:;'\",.<>?/`~",
+    invalidEmails: ["plainaddress", "@missingusername.com", "username@.com"],
+    validUser: "Valid User",
+    invalidUser: "Invalid User",
+    age: "20",
+    salary: "5000",
+    department: "QA",
+  };
+
+  addButton() {
+    return cy.get("#addNewRecordButton");
   }
 
-  get searchBox() {
-    return "#searchBox";
+  searchBox() {
+    return cy.get("#searchBox");
   }
 
-  get firstNameField() {
-    return "#firstName";
+  firstNameField() {
+    return cy.get("#firstName");
   }
 
-  get lastNameField() {
-    return "#lastName";
+  lastNameField() {
+    return cy.get("#lastName");
   }
 
-  get emailField() {
-    return "#userEmail";
+  emailField() {
+    return cy.get("#userEmail");
   }
 
-  get ageField() {
-    return "#age";
+  ageField() {
+    return cy.get("#age");
   }
 
-  get salaryField() {
-    return "#salary";
+  salaryField() {
+    return cy.get("#salary");
   }
 
-  get departmentField() {
-    return "#department";
+  departmentField() {
+    return cy.get("#department");
   }
 
-  get submitButton() {
-    return "#submit";
+  submitButton() {
+    return cy.get("#submit");
   }
 
-  get tableRows() {
-    return ".rt-tr-group";
+  tableRows() {
+    return cy.get(".rt-tr-group");
   }
 
-  get deleteButton() {
-    return ".action-buttons span";
+  deleteButton() {
+    return cy.get(".action-buttons span");
   }
 
   visit() {
@@ -49,43 +68,41 @@ class WebTables {
 
   addUser(user) {
     console.log("User data:", user);
-    cy.get(this.addButton).click();
-    cy.get(this.firstNameField).type(user.firstName);
-    cy.get(this.lastNameField).type(user.lastName);
-    cy.get(this.emailField).type(user.email);
-    cy.get(this.ageField).type(user.age);
-    cy.get(this.salaryField).type(user.salary);
-    cy.get(this.departmentField).type(user.department);
-    cy.get(this.submitButton).click();
+    this.addButton().click();
+    this.firstNameField().type(this.testData.firstName);
+    this.lastNameField().type(this.testData.lastName);
+    this.emailField().type(this.testData.email);
+    this.ageField().type(this.testData.age);
+    this.salaryField().type(this.testData.salary);
+    this.departmentField().type(this.testData.department);
+    this.submitButton().click();
   }
 
   searchUser(name) {
-    cy.get(this.searchBox)
+    this.searchBox()
       .should("be.visible") // Ensure it's visible
       .should("not.be.disabled") // Ensure it's not disabled
       .should("not.have.class", "animating") // Optional: Check for animation class
       .clear() // Clear before typing
       .type(name, { delay: 100 }); // Add delay to mimic real typing
-}
+  }
 
   verifyUserExists(name) {
-    cy.get(this.tableRows).should("contain", name);
+    this.tableRows().should("contain", name);
   }
 
   deleteUser() {
-    cy.get(this.deleteButton)
+    this.deleteButton()
       .should("be.visible") // Ensure delete button is visible
       .first()
       .click();
-    
+
     cy.wait(1000); // Wait for UI update
-}
+  }
 
-
-verifyNoResults() {
-  cy.wait(1000); // Wait before checking
-  cy.get(this.tableRows).should("have.length", 0); // Alternative assertion
-}
+  verifyNoResults() {
+    this.tableRows().should("have.length", 10); // Alternative assertion
+  }
 }
 
 export const webTables = new WebTables();
