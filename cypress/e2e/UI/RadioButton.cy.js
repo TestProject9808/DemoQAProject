@@ -5,12 +5,10 @@ describe("DemoQA - Radio Button Tests", () => {
     radioButton.visit();
   });
 
-  it("1. Verify Selecting 'Yes' and 'Impressive' Updates Output Correctly", () => {
-    // Select 'Yes' and verify
+  it("Verify Selecting 'Yes' and 'Impressive' Updates Output Correctly", () => {
     radioButton.selectYes();
     radioButton.verifyResult("Yes");
 
-    // Select 'Impressive' and verify
     radioButton.selectImpressive();
     radioButton.verifyResult("Impressive");
   });

@@ -1,5 +1,3 @@
-// create a class named buttons
-
 class Buttons {
   NAMES = {
     url: "buttons",

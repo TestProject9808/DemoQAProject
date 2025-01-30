@@ -23,8 +23,8 @@ class RadioButton {
       cy.get(this.impressiveOption).click();
     }
   
-    verifySelection(option) {
-      cy.get("#result").should("contain", option);
+    verifyResult(option) {
+      cy.get(".mt-3").should("contain", option);
     }
   }
   
