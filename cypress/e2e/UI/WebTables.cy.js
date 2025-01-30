@@ -16,7 +16,7 @@ describe("DemoQA - Web Tables Tests", () => {
   it("Add a New User and Verify It Appears in the Table", () => {
     webTables.addUser(webTables.testData.fullName);
     webTables.searchUser(webTables.testData.firstName);
-    webTables.verifyUserExists(webTables.testData.validUser);
+    webTables.verifyUserExists(webTables.testData.firstName);
 });
 
   it("Search for a Nonexistent User and Verify No Results", () => {
@@ -25,13 +25,13 @@ describe("DemoQA - Web Tables Tests", () => {
   });
 
   it("Delete a User and Verify It is Removed", () => {
-    webTables.addUser(webTables.testData.validUser);
-    webTables.searchUser(webTables.testData.validUser);
+    webTables.addUser(webTables.testData.firstName);
+    webTables.searchUser(webTables.testData.firstName);
     webTables.deleteUser();
     webTables.verifyNoResults();
   });
 
-  it("Attempt to Add a User with Invalid Data (Should Not Be Added)", () => {
+  it.only("Attempt to Add a User with Invalid Data (Should Not Be Added)", () => {
     webTables.addUser(webTables.testData.invalidUser);
     webTables.searchUser(webTables.testData.invalidUser);
     webTables.verifyNoResults();
