@@ -20,7 +20,7 @@ describe("Checkbox testing", () => {
     cy.get(basePage.LOCATORS.h1).should("contain", checkBox.NAMES.title);
   });
 
-  it("Verifie Checking functionality by checking from HomeNode (invisible from UI)", () => {
+  it("Verify Checking functionality by checking from HomeNode (invisible from UI)", () => {
     checkBox.getCheckboxID().contains(checkBox.NAMES.checkBox).click();
     //check
     checkBox

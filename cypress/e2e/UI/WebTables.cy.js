@@ -1,11 +1,14 @@
 import { webTables } from "../../Pages/WebTables";
+import { basePage } from "../../Pages/Base";
 describe("DemoQA - Web Tables Tests", () => {
   const testData = Cypress.config.testData;
 
   beforeEach(() => {
-    cy.visit("/webtables");
-    cy.contains("Web Tables").click()
-
+        cy.visit("/");
+        cy.contains(basePage.sections[0]).should("be.visible");
+        cy.contains(basePage.sections[0]).click();
+        webTables.getWebTablesID().should("contain", webTables.testData.webTables).click();
+        
   });
 
   it("Verify Page Elements are Displayed", () => {
@@ -17,7 +20,7 @@ describe("DemoQA - Web Tables Tests", () => {
     webTables.addUser(webTables.getFullName());
     webTables.searchUser(webTables.testData.firstName);
     webTables.verifyUserExists(webTables.testData.firstName);
-});
+  });
 
   it("Search for a Nonexistent User and Verify No Results", () => {
     webTables.searchUser("NonexistentUser");

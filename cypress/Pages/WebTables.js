@@ -15,6 +15,7 @@ class WebTables {
     age: "20",
     salary: "5000",
     department: "QA",
+    webTables: "Web Tables",
   };
 
   addButton() {
@@ -104,7 +105,11 @@ class WebTables {
   }
 
   getFullName() {
-    return `${this.firstName}${" "}${this.lastName}`;
+    return `${this.testData.firstName}${" "}${this.testData.lastName}`;
+  }
+
+  getWebTablesID() {
+    return cy.get("#item-3");
   }
 }
 
