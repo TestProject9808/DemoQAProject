@@ -3,13 +3,12 @@ import { buttons } from "../../Pages/Buttons";
 
 describe("Elements/Buttons testing", () => {
   beforeEach(() => {
-    cy.visit("/buttons"); //change visit URL
-  });
-
-  it("Verify Buttons functionality and page content", () => {
-    cy.visit("/"); //change to cy.contains.click and move under beforeEach
+    cy.visit("/");
     cy.contains(basePage.sections[0]).should("be.visible");
     cy.contains(basePage.sections[0]).click();
+  });
+
+  it("Verify Buttons functionality and page content", () => { 
     basePage.getHeaderText().should("contain", basePage.sections[0]);
     cy.contains(buttons.NAMES.buttons).should("be.visible");
     buttons.getButtonsID().should("not.have.class", basePage.LOCATORS.active);
@@ -22,6 +21,7 @@ describe("Elements/Buttons testing", () => {
   });
 
   it("Verify buttons functionality", () => {
+    cy.visit("/buttons"); //change visit URL
     // Check double click button
     cy.contains(buttons.NAMES.btnDblClick).click(); //negative case
     cy.get(buttons.NAMES.msgDblClick).should("not.exist"); //negative case
