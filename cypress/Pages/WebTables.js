@@ -1,6 +1,5 @@
 class WebTables {
   testData = {
-    fullName: "John Doe",
     email: "john.doe@example.com",
     currentAddress: "123 Cypress Lane",
     permanentAddress: "456 Automation Street",
@@ -67,7 +66,7 @@ class WebTables {
   }
 
   addUser(user) {
-    console.log("User data:", user);
+    cy.log(`${"User data: "}${user}`);
     this.addButton().click();
     this.firstNameField().type(this.testData.firstName);
     this.lastNameField().type(this.testData.lastName);
@@ -102,6 +101,10 @@ class WebTables {
 
   verifyNoResults() {
     this.tableRows().should("have.length", 10); // Alternative assertion
+  }
+
+  getFullName() {
+    return `${this.firstName}${" "}${this.lastName}`;
   }
 }
 

@@ -1,4 +1,23 @@
 class TextBox {
+
+    testData = {
+      validData: {
+        fullName: "John Doe",
+        email: "john.doe@example.com",
+        currentAddress: "123 Cypress Lane",
+        permanentAddress: "456 Automation Street",
+      },
+      updatedData: {
+        fullName: "Updated Name",
+        email: "updated.email@example.com",
+        currentAddress: "Updated Current Address",
+        permanentAddress: "Updated Permanent Address",
+      },
+      specialChars: "@#$%^&*!()_-+=[]{}|\\:;'\",.<>?/`~",
+      invalidEmails: ["plainaddress", "@missingusername.com", "username@.com"],
+    };
+
+
   //change the locatoors 
   fullNameField() {
     return cy.get("#userName");

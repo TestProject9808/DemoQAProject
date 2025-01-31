@@ -1,10 +1,10 @@
 
-// create a class named Dinamic Properties
+// create a class named Dynamic Properties
 
-class DinamicProperties {
+class DynamicProperties {
     NAMES = {
       url: "dynamic-properties",
-      dinamicProperties: "Dynamic Properties",
+      dynamicProperties: "Dynamic Properties",
       title: "Dynamic Properties",
       decription: "This text has random Id",
       btnWillEnabled: "Will enable 5 seconds",
@@ -21,7 +21,7 @@ class DinamicProperties {
         white: "rgb(255, 255, 255)",
     }
 
-    getDinamicPropertiesID() {
+    getDynamicPropertiesID() {
         return cy.get("#item-8");
       };
 
@@ -38,5 +38,5 @@ class DinamicProperties {
      }  
   }
   
-  export const dinamicProperties = new DinamicProperties();
+  export const dynamicProperties = new DynamicProperties();
   
