@@ -8,7 +8,7 @@ describe("Dynamic Elements testing", () => {
     cy.contains(basePage.sections[0]).click();
   });
 
-  it("Verifies Dynamic Elements button functionality and Page", () => {
+  it("Verify Dynamic Properties button functionality and Page", () => {
     basePage.getHeaderText().should("contain", basePage.sections[0]);
     cy.contains(dynamicProperties.NAMES.dynamicProperties).should("be.visible");
     dynamicProperties
