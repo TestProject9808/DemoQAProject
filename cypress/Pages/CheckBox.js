@@ -1,5 +1,3 @@
-// create a class named CheckBox
-
 class CheckBox {
   NAMES = {
     url: "checkbox",

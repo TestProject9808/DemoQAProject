@@ -1,5 +1,4 @@
 // create a class named BasePage, where
-
 class BasePage {
   NAMES = {
     messageSelectSector: "Please select an item from left to start practice.",

@@ -3,11 +3,11 @@ import { buttons } from "../../Pages/Buttons";
 
 describe("Elements/Buttons testing", () => {
   beforeEach(() => {
-    cy.visit("/buttons");
+    cy.visit("/buttons"); //change visit URL
   });
 
   it("Verify Buttons functionality and page content", () => {
-    cy.visit("/");
+    cy.visit("/"); //change to cy.contains.click and move under beforeEach
     cy.contains(basePage.sections[0]).should("be.visible");
     cy.contains(basePage.sections[0]).click();
     basePage.getHeaderText().should("contain", basePage.sections[0]);

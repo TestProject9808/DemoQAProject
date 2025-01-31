@@ -1,38 +1,39 @@
 class TextBox {
-  get fullNameField() {
-    return "#userName";
+  //change the locatoors 
+  fullNameField() {
+    return cy.get("#userName");
   }
 
-  get emailField() {
-    return "#userEmail";
+  emailField() {
+    return cy.get("#userEmail");
   }
 
-  get currentAddressField() {
-    return "#currentAddress";
+  currentAddressField() {
+    return cy.get("#currentAddress");
   }
 
-  get permanentAddressField() {
-    return "#permanentAddress";
+  permanentAddressField() {
+    return cy.get("#permanentAddress");
   }
 
-  get submitButton() {
-    return "#submit";
+  submitButton() {
+    return cy.get("#submit");
   }
 
-  get outputName() {
-    return "#output #name";
+  outputName() {
+    return cy.get("#output #name");
   }
 
-  get outputEmail() {
-    return "#output #email";
+  outputEmail() {
+    return cy.get("#output #email");
   }
 
-  get outputCurrentAddress() {
-    return "#output #currentAddress";
+  outputCurrentAddress() {
+    return cy.get("#output #currentAddress");
   }
 
-  get outputPermanentAddress() {
-    return "#output #permanentAddress";
+  outputPermanentAddress() {
+    return cy.get("#output #permanentAddress");
   }
 
   visit() {
@@ -40,21 +41,21 @@ class TextBox {
   }
 
   fillForm(data) {
-    cy.get(this.fullNameField).clear().type(data.fullName);
-    cy.get(this.emailField).clear().type(data.email);
-    cy.get(this.currentAddressField).clear().type(data.currentAddress);
-    cy.get(this.permanentAddressField).clear().type(data.permanentAddress);
+    this.fullNameField().clear().type(data.fullName);
+    this.emailField().clear().type(data.email);
+    this.currentAddressField().clear().type(data.currentAddress);
+    this.permanentAddressField().clear().type(data.permanentAddress);
   }
 
   submitForm() {
-    cy.get(this.submitButton).click();
+    this.submitButton().click();
   }
 
   verifyOutput(data) {
-    cy.get(this.outputName).should("contain", data.fullName);
-    cy.get(this.outputEmail).should("contain", data.email);
-    cy.get(this.outputCurrentAddress).should("contain", data.currentAddress);
-    cy.get(this.outputPermanentAddress).should(
+    this.outputName().should("contain", data.fullName);
+    this.outputEmail().should("contain", data.email);
+    this.outputCurrentAddress().should("contain", data.currentAddress);
+    this.outputPermanentAddress().should(
       "contain",
       data.permanentAddress
     );

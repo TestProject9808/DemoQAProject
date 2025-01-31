@@ -3,15 +3,17 @@ describe("DemoQA - Text Box Tests", () => {
   const { testData } = Cypress.env();
 
   beforeEach(() => {
-    textBox.visit("/text-box");
+    textBox.visit("/");
+    cy.contains("Text Box").click()
+
   });
 
   it("Verify Page Elements are Displayed", () => {
-    cy.get(textBox.fullNameField).should("be.visible");
-    cy.get(textBox.emailField).should("be.visible");
-    cy.get(textBox.currentAddressField).should("be.visible");
-    cy.get(textBox.permanentAddressField).should("be.visible");
-    cy.get(textBox.submitButton).should("be.visible");
+    textBox.fullNameField().should("be.visible");
+    textBox.emailField().should("be.visible");
+    textBox.currentAddressField().should("be.visible");
+    textBox.permanentAddressField().should("be.visible");
+    textBox.submitButton().should("be.visible");
   });
 
   it("Input Valid Data and Submit", () => {
@@ -22,22 +24,22 @@ describe("DemoQA - Text Box Tests", () => {
 
   it("Validate Email Field", () => {
     testData.invalidEmails.forEach((email) => {
-      cy.get(textBox.emailField).clear().type(email);
+      textBox.emailField().clear().type(email);
       textBox.submitForm();
-      cy.get(textBox.outputEmail).should("not.exist");
+      textBox.outputEmail().should("not.exist");
     });
 
-    cy.get(textBox.emailField).clear().type(testData.validData.email);
+    textBox.emailField().clear().type(testData.validData.email);
     textBox.submitForm();
-    cy.get(textBox.outputEmail).should("contain", testData.validData.email);
+    textBox.outputEmail().should("contain", testData.validData.email);
   });
 
   it("Clear Field and Re-enter Data", () => {
     textBox.fillForm(testData.validData);
-    cy.get(textBox.fullNameField).clear();
-    cy.get(textBox.emailField).clear();
-    cy.get(textBox.currentAddressField).clear();
-    cy.get(textBox.permanentAddressField).clear();
+    textBox.fullNameField().clear();
+    textBox.emailField().clear();
+    textBox.currentAddressField().clear();
+    textBox.permanentAddressField().clear();
 
     textBox.fillForm(testData.updatedData);
     textBox.submitForm();
@@ -45,18 +47,18 @@ describe("DemoQA - Text Box Tests", () => {
   });
 
   it("Validate Special Characters in Fields", () => {
-    cy.get(textBox.fullNameField).type(testData.specialChars);
-    cy.get(textBox.emailField).type(testData.validData.email);
-    cy.get(textBox.currentAddressField).type(testData.specialChars);
-    cy.get(textBox.permanentAddressField).type(testData.specialChars);
+    textBox.fullNameField().type(testData.specialChars);
+    textBox.emailField().type(testData.validData.email);
+    textBox.currentAddressField().type(testData.specialChars);
+    textBox.permanentAddressField().type(testData.specialChars);
 
     textBox.submitForm();
-    cy.get(textBox.outputName).should("contain", testData.specialChars);
-    cy.get(textBox.outputCurrentAddress).should(
+    textBox.outputName().should("contain", testData.specialChars);
+    textBox.outputCurrentAddress().should(
       "contain",
       testData.specialChars
     );
-    cy.get(textBox.outputPermanentAddress).should(
+    textBox.outputPermanentAddress().should(
       "contain",
       testData.specialChars
     );
