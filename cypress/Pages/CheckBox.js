@@ -18,6 +18,7 @@ class CheckBox {
     unchecked: "rct-icon-uncheck",
     openedToggle: "rct-icon-expand-open",
     closedToggle: "rct-icon-expand-close",
+    rctIcon: ".rct-icon",
   };
 
   getCheckboxID() {
