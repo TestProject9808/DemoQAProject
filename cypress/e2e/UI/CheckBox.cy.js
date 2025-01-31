@@ -1,7 +1,7 @@
 import { basePage } from "../../Pages/Base";
 import { checkBox } from "../../Pages/CheckBox";
 
-describe("Main page testing", () => {
+describe("Checkbox testing", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.contains(basePage.sections[0]).should("be.visible");
@@ -13,14 +13,14 @@ describe("Main page testing", () => {
     cy.contains(checkBox.NAMES.checkBox).should("be.visible");
     checkBox.getCheckboxID().should("not.have.class", basePage.LOCATORS.active);
     checkBox.getCheckboxID().contains(checkBox.NAMES.checkBox).click();
-    //check the checkbox URL and that it becomes active
+    //verify the CheckBox is active and it's URL
     cy.url().should("include", `/${checkBox.NAMES.url}`);
     checkBox.getCheckboxID().should("have.class", basePage.LOCATORS.active);
     //checking the title
     cy.get(basePage.LOCATORS.h1).should("contain", checkBox.NAMES.title);
   });
 
-  it("Verifie Checking functionality by checking from HomeNode (invisible from UI)", () => {
+  it("Verify Checking functionality by checking from HomeNode (invisible from UI)", () => {
     checkBox.getCheckboxID().contains(checkBox.NAMES.checkBox).click();
     //check
     checkBox
@@ -83,7 +83,7 @@ describe("Main page testing", () => {
       .getToggle()
       .get(basePage.LOCATORS.svg)
       .first()
-      .get(".rct-icon")
+      .get(checkBox.LOCATORS.rctIcon)
       .should("have.class", checkBox.LOCATORS.closedToggle);
 
     // Click on first Toggle
@@ -94,7 +94,7 @@ describe("Main page testing", () => {
       .getToggle()
       .get(basePage.LOCATORS.svg)
       .first()
-      .get(".rct-icon")
+      .get(checkBox.LOCATORS.rctIcon)
       .should("have.class", checkBox.LOCATORS.openedToggle);
 
     checkBox.getFirtsLevelParents().should("have.length", "3");
