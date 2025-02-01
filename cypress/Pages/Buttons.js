@@ -16,7 +16,7 @@ class Buttons {
   };
 
   getClickButton() {
-    return cy.get("div.mt-4").eq(1).get("button").last();
+    return cy.get(".btn-primary").last();
   };
 
 }
