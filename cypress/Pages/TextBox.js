@@ -48,7 +48,7 @@ class TextBox {
   }
 
   outputCurrentAddress() {
-    return cy.get("#output #currentAddress");//
+    return cy.get("#output #currentAddress");
   }
 
   outputPermanentAddress() {
